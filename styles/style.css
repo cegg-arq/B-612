@@ -165,10 +165,7 @@
 
 /* ========================= CARRUSEL B-612 ========================= */
 
-/* ============================================
-   CARRUSEL B-612 — VERSION OPTIMIZADA
-===============================================*/
-
+/* CONTENEDOR PRINCIPAL */
 .full-visual-carousel {
     position: relative;
     width: 100%;
@@ -176,7 +173,7 @@
     overflow: hidden;
 }
 
-/* Contenedor de slides */
+/* SLIDES */
 .slides {
     display: flex;
     height: 100%;
@@ -185,7 +182,7 @@
     will-change: transform;
 }
 
-/* Cada slide */
+/* SLIDE INDIVIDUAL */
 .slide {
     min-width: 100%;
     height: 100%;
@@ -193,14 +190,14 @@
     overflow: hidden;
 }
 
-/* Imagen — estética suave */
+/* IMÁGENES */
 .slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 
-    opacity: 0.78;
-    filter: brightness(0.85);
+    opacity: 0.85;
+    filter: brightness(0.92);
 
     transform: scale(1.08);
     transition: 
@@ -210,25 +207,26 @@
     will-change: transform, opacity;
 }
 
-/* Zoom de llegada */
+/* ZOOM EN ENTRADA */
 .slide.active img {
-    opacity: 0.95;
+    opacity: 1;
     transform: scale(1);
 }
 
-/* Overlay espacial */
+/* OVERLAY ESPACIAL */
 .slide-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center,
-        rgba(255,255,255,0.04) 0%,
-        rgba(0,0,0,0.65) 65%
+    background: radial-gradient(
+        circle at center,
+        rgba(255,255,255,0.02) 0%,
+        rgba(0,0,0,0.35) 60%
     );
     pointer-events: none;
     mix-blend-mode: soft-light;
 }
 
-/* Botón CTA */
+/* BOTÓN CTA */
 .btn-slide {
     position: absolute;
     bottom: 40px;
@@ -250,7 +248,7 @@
     box-shadow: 0 0 22px rgba(255,186,0,0.7);
 }
 
-/* Flechas */
+/* FLECHAS */
 .nav {
     position: absolute;
     top: 50%;
@@ -275,7 +273,7 @@
 .nav.prev { left: 25px; }
 .nav.next { right: 25px; }
 
-/* Dots */
+/* DOTS */
 .dots {
     position: absolute;
     bottom: 22px;
@@ -298,6 +296,37 @@
     background: #ffdd55;
     transform: scale(1.35);
 }
+
+/* =========================
+   FIX PARA MÓVILES
+========================= */
+
+@media (max-width: 768px) {
+
+    .full-visual-carousel {
+        height: 65vh;  /* Menor altura = no deforma */
+    }
+
+    .slide img {
+        opacity: 0.92;
+        filter: brightness(0.95);
+        transform: scale(1.02); /* MUCHÍSIMO menor zoom */
+    }
+
+    .slide-overlay {
+        background: radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.01) 0%,
+            rgba(0,0,0,0.25) 55%
+        ); /* Menos oscuro */
+    }
+
+    .btn-slide {
+        bottom: 25px;
+        left: 25px;
+        padding: 11px 26px;
+    }
+
 
 /* --- MENÚ PLANETARIO --- */
 
