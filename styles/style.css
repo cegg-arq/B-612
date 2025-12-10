@@ -196,11 +196,10 @@
     height: 100%;
     object-fit: cover;
 
-    opacity: 0.85;
-    filter: brightness(0.92);
-
-    transform: scale(1.08);
-    transition: 
+    opacity: 1; /* SIN oscurecer */
+    filter: none; /* SIN filtros */
+    transform: scale(1.05);
+    transition:
         transform 2.2s cubic-bezier(0.22, 0.61, 0.36, 1),
         opacity 1s ease-out;
 
@@ -209,21 +208,12 @@
 
 /* ZOOM EN ENTRADA */
 .slide.active img {
-    opacity: 1;
     transform: scale(1);
 }
 
-/* OVERLAY ESPACIAL */
+/* OVERLAY ELIMINADO */
 .slide-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle at center,
-        rgba(255,255,255,0.02) 0%,
-        rgba(0,0,0,0.35) 60%
-    );
-    pointer-events: none;
-    mix-blend-mode: soft-light;
+    display: none !important;
 }
 
 /* BOTÓN CTA */
@@ -304,21 +294,16 @@
 @media (max-width: 768px) {
 
     .full-visual-carousel {
-        height: 65vh;  /* Menor altura = no deforma */
+        height: 65vh;
     }
 
     .slide img {
-        opacity: 0.92;
-        filter: brightness(0.95);
-        transform: scale(1.02); /* MUCHÍSIMO menor zoom */
+        transform: scale(1.02);
     }
 
+    /* Overlay sigue eliminado */
     .slide-overlay {
-        background: radial-gradient(
-            circle at center,
-            rgba(255,255,255,0.01) 0%,
-            rgba(0,0,0,0.25) 55%
-        ); /* Menos oscuro */
+        display: none !important;
     }
 
     .btn-slide {
@@ -326,6 +311,7 @@
         left: 25px;
         padding: 11px 26px;
     }
+}
 
 
 /* --- MENÚ PLANETARIO --- */

@@ -51,8 +51,9 @@ window.addEventListener("scroll", () => {
 // --------------------------------------------
 
 /* ===============================
+/* =========================
    CARRUSEL B-612 — OPTIMIZADO
-================================*/
+========================= */
 
 const slides = document.querySelectorAll(".slide");
 const slidesContainer = document.querySelector(".slides");
@@ -62,7 +63,7 @@ let index = 0;
 let total = slides.length;
 let isAnimating = false;
 
-/* Crear dots */
+/* Crear dots dinámicamente */
 for (let i = 0; i < total; i++) {
     const dot = document.createElement("div");
     if (i === 0) dot.classList.add("active");
@@ -70,11 +71,9 @@ for (let i = 0; i < total; i++) {
 }
 const dots = dotsContainer.querySelectorAll("div");
 
-
-/* Función que actualiza el carrusel */
+/* Actualizar vista */
 function updateSlides(smooth = true) {
-
-    slidesContainer.style.transition = smooth 
+    slidesContainer.style.transition = smooth
         ? "transform 0.65s ease-in-out"
         : "none";
 
@@ -87,45 +86,38 @@ function updateSlides(smooth = true) {
     dots[index].classList.add("active");
 }
 
-
 /* Siguiente */
 function nextSlide() {
     if (isAnimating) return;
     isAnimating = true;
 
-    index++;
-    if (index >= total) index = 0;
-
+    index = (index + 1) % total;
     updateSlides(true);
 
     setTimeout(() => isAnimating = false, 650);
 }
-
 
 /* Anterior */
 function prevSlide() {
     if (isAnimating) return;
     isAnimating = true;
 
-    index--;
-    if (index < 0) index = total - 1;
-
+    index = (index - 1 + total) % total;
     updateSlides(true);
 
     setTimeout(() => isAnimating = false, 650);
 }
 
-
-/* Eventos */
+/* Botones */
 document.querySelector(".next").addEventListener("click", nextSlide);
 document.querySelector(".prev").addEventListener("click", prevSlide);
-
 
 /* Autoplay */
 setInterval(nextSlide, 5000);
 
 /* Inicial */
 updateSlides();
+
 
 
 // modales--------------------------------------
