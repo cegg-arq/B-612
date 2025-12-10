@@ -1,0 +1,1225 @@
+/* ======================= NAV ======================= */
+#navbar {
+    z-index: 1000 !important;
+    transition: background 0.3s ease, padding 0.3s ease;
+}
+
+#navbar.scrolled {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    padding: 0.6rem 0 !important;
+}
+
+/* Logo nav */
+.logo-b612 {
+    width: 60px;
+    height: auto;
+}
+
+/* Botón CTA amarillo */
+.cta-amarillo {
+    border: 2px solid #ffbd59 !important;
+    color: #ffbd59 !important;
+    border-radius: 50px;
+    padding: 8px 24px;
+    transition: all .3s ease;
+    font-weight: 600;
+}
+.cta-amarillo:hover {
+    background: #ffbd59 !important;
+    color: #000 !important;
+}
+
+/* Para evitar subrayado */
+.no-underline {
+    text-decoration: none !important;
+}
+
+
+/* ======================= HERO ======================= */
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #18122b 0%, #0b0f26 80%, #050713 100%);
+    color: white;
+    z-index: 1; /* Asegura orden correcto */
+}
+
+/* ======================= FIX CANVAS ESTRELLAS ======================= */
+/* El canvas debe estar SIEMPRE detrás */
+#stars {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1 !important;          /* 🔥 EL FIX PRINCIPAL */
+    pointer-events: none !important; /* Evita que bloquee clics */
+}
+
+/* Halo */
+.hero-halo {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(60px);
+    z-index: 2;
+}
+
+/* Lluvia */
+.meteors {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+.meteors::before {
+    content: "";
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    width: 3px;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
+    transform: rotate(35deg);
+    animation: meteor 2.5s linear infinite;
+}
+
+@keyframes meteor {
+    0% { opacity: 0; transform: translateX(0) translateY(0) rotate(35deg); }
+    10% { opacity: 1; }
+    100% { opacity: 0; transform: translateX(-500px) translateY(900px) rotate(35deg); }
+}
+
+
+/* ========== Hero Content ========== */
+.hero-content {
+    position: relative;
+    z-index: 5;
+    max-width: 750px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+.hero-title-main {
+    font-size: 5rem;
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+}
+
+.hero-title-sub {
+    font-size: 2rem;
+    opacity: 0.95;
+    margin-bottom: 1.8rem;
+    font-weight: 400;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2.3rem;
+}
+
+/* Botones hero */
+.btn-hero-primary,
+.btn-hero-secondary {
+    border-radius: 50px;
+    padding: 12px 28px;
+    margin: 0 8px;
+    font-weight: 600;
+    transition: all .3s ease;
+    text-decoration: none !important;
+}
+
+.btn-hero-primary {
+    background: #ffbd59;
+    color: #000;
+}
+.btn-hero-primary:hover {
+    background: #f5b043;
+}
+
+.btn-hero-secondary {
+    background: transparent;
+    border: 2px solid #ffbd59;
+    color: #ffbd59;
+}
+.btn-hero-secondary:hover {
+    background: #ffbd59;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .hero-title-main { font-size: 3.2rem; }
+    .hero-title-sub { font-size: 1.4rem; }
+    .hero-subtitle { font-size: 1rem; }
+}
+
+
+/* ========================= CARRUSEL B-612 ========================= */
+
+/* ============================================
+   CARRUSEL B-612 — VERSION OPTIMIZADA
+===============================================*/
+
+.full-visual-carousel {
+    position: relative;
+    width: 100%;
+    height: 78vh;
+    overflow: hidden;
+}
+
+/* Contenedor de slides */
+.slides {
+    display: flex;
+    height: 100%;
+    transform: translateX(0);
+    transition: transform 0.65s ease-in-out;
+    will-change: transform;
+}
+
+/* Cada slide */
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Imagen — estética suave */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    opacity: 0.78;
+    filter: brightness(0.85);
+
+    transform: scale(1.08);
+    transition: 
+        transform 2.2s cubic-bezier(0.22, 0.61, 0.36, 1),
+        opacity 1s ease-out;
+
+    will-change: transform, opacity;
+}
+
+/* Zoom de llegada */
+.slide.active img {
+    opacity: 0.95;
+    transform: scale(1);
+}
+
+/* Overlay espacial */
+.slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center,
+        rgba(255,255,255,0.04) 0%,
+        rgba(0,0,0,0.65) 65%
+    );
+    pointer-events: none;
+    mix-blend-mode: soft-light;
+}
+
+/* Botón CTA */
+.btn-slide {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+
+    background: #ffba00;
+    color: #000;
+    padding: 12px 28px;
+    border-radius: 35px;
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: 0.3s ease;
+    box-shadow: 0 0 15px rgba(255,186,0,0.4);
+}
+
+.btn-slide:hover {
+    background: #ffdd73;
+    box-shadow: 0 0 22px rgba(255,186,0,0.7);
+}
+
+/* Flechas */
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+
+    color: rgba(255,255,255,0.7);
+    font-size: 48px;
+    cursor: pointer;
+
+    padding: 10px;
+    transition: 0.25s ease;
+    z-index: 20;
+}
+
+.nav:hover {
+    color: #fff;
+    transform: translateY(-50%) scale(1.15);
+}
+
+.nav.prev { left: 25px; }
+.nav.next { right: 25px; }
+
+/* Dots */
+.dots {
+    position: absolute;
+    bottom: 22px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 30;
+}
+
+.dots div {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    transition: 0.3s ease;
+}
+
+.dots .active {
+    background: #ffdd55;
+    transform: scale(1.35);
+}
+
+/* --- MENÚ PLANETARIO --- */
+
+.menu-planetario {
+    padding: 80px 0;
+    background: #03071e; /* Galaxia */
+    text-align: center;
+    color: #fff;
+}
+
+.planet-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffcd4d;
+}
+
+.planet-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.7;
+    margin-bottom: 50px;
+}
+
+/* Grid */
+.planet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 40px;
+    width: 90%;
+    margin: auto;
+}
+
+/* Cards */
+.planet-card {
+    background: #0b0f2a;
+    padding: 30px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform .3s ease, box-shadow .3s ease;
+    cursor: pointer;
+}
+
+.planet-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255,255,255,0.15);
+}
+
+/* Imagen tipo planeta */
+.planet-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    position: relative;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    transition: transform .4s ease;
+}
+
+.planet-card:hover .planet-img {
+    transform: rotate(6deg) scale(1.06);
+}
+
+.planet-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Títulos */
+.planet-card h3 {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* Botón */
+.btn-planet {
+    margin-top: 15px;
+    padding: 10px 30px;
+    border-radius: 30px;
+    background: transparent;
+    border: 2px solid #ffcd4d;
+    color: #ffcd4d;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-planet:hover {
+    background: #ffcd4d;
+    color: #03071e;
+    box-shadow: 0 0 15px rgba(255,205,77,0.8);
+}
+
+/* MENU---------------------------------- */
+
+/* --- MENÚ PLANETARIO --- */
+
+.menu-planetario {
+    padding: 80px 0;
+    background: #03071e;
+    text-align: center;
+    color: #fff;
+}
+
+.planet-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.planet-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.7;
+    margin-bottom: 50px;
+}
+
+.planet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 40px;
+    width: 90%;
+    margin: auto;
+}
+
+/* Tarjetas normales */
+.planet-card {
+    background: #0b0f2a;
+    padding: 30px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform .3s ease, box-shadow .3s ease;
+    cursor: pointer;
+}
+
+.planet-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255,255,255,0.15);
+}
+
+/* Imagen normal */
+.planet-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    transition: transform .4s ease;
+}
+
+.planet-card:hover .planet-img {
+    transform: rotate(5deg) scale(1.06);
+}
+
+.planet-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.planet-card h3 {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* Botón */
+.btn-planet {
+    margin-top: 15px;
+    padding: 10px 30px;
+    border-radius: 30px;
+    background: transparent;
+    border: 2px solid #ffcd4d;
+    color: #ffcd4d;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-planet:hover {
+    background: #ffcd4d;
+    color: #03071e;
+    box-shadow: 0 0 15px rgba(255,205,77,0.8);
+}
+
+/* --- TARJETA ESPECIAL FULL SCREEN --- */
+.special-card {
+    grid-column: 1 / -1; /* Ocupar todo el ancho */
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    height: 380px;
+    border-radius: 35px;
+}
+
+.special-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45);
+}
+
+.special-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.special-content h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.special-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.special-btn {
+    background: #ffcd4d;
+    color: #03071e;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.special-btn:hover {
+    background: #ffe082;
+    box-shadow: 0 0 20px rgba(255,205,77,0.8);
+}
+
+@media (max-width: 600px) {
+    .special-card {
+        height: 280px;
+    }
+
+    .special-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .special-content p {
+        font-size: 1rem;
+    }
+
+    .special-btn {
+        padding: 10px 30px;
+        font-size: 1rem;
+    }
+}
+
+
+/* ====================== MODAL ====================== */
+
+.modal-b612 {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-b612.active {
+    display: flex;
+}
+
+/* Fondo oscuro con blur */
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Caja principal */
+.modal-box {
+    position: relative;
+    background: rgba(20, 20, 35, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px 35px;
+    width: 90%;
+    max-width: 480px;
+    color: white;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.07);
+    animation: modalPop 0.25s ease-out;
+}
+
+/* Animación */
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Botón cerrar */
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    font-size: 24px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Títulos */
+.modal-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.modal-desc {
+    font-size: 15px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+/* Ingredientes */
+.modal-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.modal-ingredients {
+    list-style: square;
+    padding-left: 20px;
+    margin: 12px 0 20px 0;
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+.modal-price {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+/* Botón Pedir */
+.btn-modal {
+    display: inline-block;
+    background: #ffce45;
+    padding: 14px 22px;
+    border-radius: 14px;
+    font-weight: 700;
+    color: #000;
+    transition: 0.2s;
+}
+
+.btn-modal:hover {
+    background: #ffdb66;
+}
+
+
+/* EXPERIENCIA B-612° */
+
+/* CONTENEDOR */
+.experiencia-b612 {
+    position: relative;
+    padding: 120px 0;
+    background: linear-gradient(180deg, #0a0f1f, #0c1228 60%, #0a0f1f);
+    overflow: hidden;
+}
+
+/* CANVAS ESTRELLAS (restaurado) */
+#stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* CONTENIDO */
+.contenido-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 950px;
+    margin: auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* TÍTULO */
+.titulo-exp {
+    font-size: 48px;
+    font-weight: 800;
+    color: #FFCE45;
+    margin-bottom: 25px;
+}
+
+/* INTRO */
+.intro-exp {
+    font-size: 19px;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    line-height: 1.45;
+}
+
+/* TEXTO SECUNDARIO */
+.subtexto-exp {
+    font-size: 17px;
+    opacity: 0.75;
+    color: #ffffff;
+    max-width: 760px;
+    margin: 0 auto 60px;
+}
+
+/* TARJETAS */
+.cards-exp {
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.card-exp {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(6px);
+    padding: 35px 28px;
+    border-radius: 22px;
+    max-width: 280px;
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card-exp:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(255,255,255,0.08);
+}
+
+.card-exp img {
+    width: 150px;
+    margin-bottom: 15px;
+    opacity: 0.95;
+}
+
+.card-exp h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-exp p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+}
+
+/* BOTÓN */
+.btn-exp {
+    margin-top: 55px;
+    background: #FFCE45;
+    color: #111;
+    border: none;
+    padding: 14px 34px;
+    font-size: 18px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-exp:hover {
+    background: #ffd766;
+    box-shadow: 0 0 18px rgba(255,206,69,0.4);
+}
+
+#stars-exp {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.btn-exp {
+    text-decoration: none !important;
+    display: inline-block; /* mantiene el estilo exacto del botón */
+}
+
+
+/* ======================= GALERIA ======================= */
+
+/* ========== GALERÍA CONSTELADA ========== */
+.galeria-constelada {
+  position: relative;
+  padding: 100px 20px;
+  background: linear-gradient(180deg,#0a0f1f,#071025 80%); /* azul espacial */
+  color: #fff;
+  overflow: hidden;
+}
+
+/* fondo estático: patrón o imagen muy sutil */
+.galaxy-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/images/stars-pattern.svg'); /* vector/PNG sutil */
+  background-repeat: repeat;
+  background-size: 900px;
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* canvas de partículas (animadas sutil) */
+#galaxy-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* wrapper del contenido */
+.galeria-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 18px;
+}
+
+.galeria-title {
+  font-size: 2.5rem;
+  color: #FFCE45;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.galeria-sub {
+  font-size: 1.05rem;
+  opacity: 0.85;
+  margin-bottom: 28px;
+}
+
+/* contenedor de items: usado como stage para posicionamiento libre */
+.constellation {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px 60px;
+}
+
+/* item: rectangular con bordes suaves */
+.gal-item {
+  width: 340px;
+  max-width: 32%;
+  min-width: 220px;
+  border-radius: 18px;
+  overflow: visible;
+  transition: transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
+  transform-origin: center;
+  position: relative;
+  z-index: 3;
+  cursor: pointer;
+  will-change: transform;
+}
+
+/* imagen dentro del item */
+.gal-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  box-shadow: 0 8px 20px rgba(2,6,18,0.6);
+  transition: transform .6s ease, filter .3s ease;
+}
+
+/* hover: levitación y ligero zoom */
+.gal-item:hover {
+  transform: translateY(-12px);
+  z-index: 6;
+}
+.gal-item:hover img {
+  transform: translateY(-6px) scale(1.02);
+  filter: saturate(1.06) contrast(1.02);
+}
+
+/* pequeño halo al pasar (amarillo muy sutil) */
+.gal-item::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 20px;
+  background: radial-gradient(circle, rgba(255,206,69,0.06), transparent 40%);
+  opacity: 0;
+  transition: opacity .35s;
+  z-index: 2;
+}
+.gal-item:hover::after { opacity: 1; }
+
+/* SVG que dibuja las líneas */
+.constellation-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* responsive */
+@media (max-width: 1100px) {
+  .gal-item { width: 44%; min-width: 200px; }
+  .gal-item img { height: 200px; }
+}
+@media (max-width: 700px) {
+  .constellation { flex-wrap: wrap; gap: 18px; }
+  .gal-item { width: 100%; max-width: 420px; }
+  .gal-item img { height: 220px; }
+}
+
+/* ======================= CONTACTO ======================= */
+
+/* =============================
+   FONDO GALÁCTICO — CONTACTO
+============================= */
+
+.contact-section {
+    position: relative;
+    padding: 120px 20px;
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.22), rgba(0,0,0,0.95)),
+                radial-gradient(circle at bottom left, rgba(69,129,255,0.15), rgba(0,0,0,1));
+    overflow: hidden;
+}
+
+#contact-stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =============================
+   CONTENIDO
+============================= */
+
+.contact-content {
+    position: relative;
+    z-index: 5;
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+
+/* TÍTULOS — misma fuente del HERO */
+.contacto-title {
+    font-family: var(--hero-title-font, "Space Grotesk"), sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: #FFCE45;
+    text-transform: uppercase;
+}
+
+.contacto-sub {
+    color: #e6e6e6;
+    font-size: 18px;
+    margin-top: 4px;
+}
+
+
+/* =============================
+   GRID
+============================= */
+
+.contact-grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+
+/* =============================
+   CARD
+============================= */
+
+.big-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 30px;
+    border-radius: 18px;
+    backdrop-filter: blur(3px);
+    height: fit-content;
+}
+
+.card-title {
+    color: #FFCE45;
+    font-weight: 700;
+    margin-bottom: 4px;
+    font-size: 20px;
+}
+
+.card-text {
+    color: #dbdbdb;
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+
+/* =============================
+   FORMULARIO
+============================= */
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(255,255,255,0.04);
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(3px);
+}
+
+.contact-form label {
+    color: #fff;
+    font-weight: 500;
+    text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.contact-form textarea {
+    height: 140px;
+    resize: none;
+}
+
+
+/* BOTÓN */
+.btn-galaxy {
+    margin-top: 8px;
+    background: #FFCE45;
+    padding: 12px 0;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-galaxy:hover {
+    filter: brightness(1.1);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.contact-section {
+    position: relative;
+    padding: 120px 20px;
+
+    /* FONDO GALÁCTICO CON BASE EXACTA #03071e */
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(255, 255, 255, 0.10),   /* brillo suave como en tu referencia */
+            #03071e 70%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            rgba(80, 120, 255, 0.18),    /* nebulosa azul tenue */
+            #03071e 80%
+        ),
+        #03071e;                         /* color base EXACTO */
+
+    overflow: hidden;
+}
+
+
+/* ===========================
+   FOOTER B-612 INTEGRADO
+=========================== */
+.footer-b612 {
+  width: 100%;
+  padding: 70px 0 40px;
+  background: linear-gradient(
+      to bottom,
+      rgba(10, 12, 21, 0) 0%,
+      rgba(10, 12, 21, 0.4) 30%,
+      rgba(10, 12, 21, 0.9) 80%,
+      rgba(10, 12, 21, 1) 100%
+    ),
+    #0a0c15;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Suave neblina para fusionarlo con la sección de contacto */
+.footer-b612::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: radial-gradient(
+    circle at 50% 0,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  filter: blur(40px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Estrellas sutiles en movimiento */
+.footer-b612::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://i.imgur.com/iydP6Fb.png");
+  opacity: 0.12;
+  animation: footerStars 60s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes footerStars {
+  from { background-position: 0 0; }
+  to { background-position: 800px 600px; }
+}
+
+/* CONTENIDO */
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+.footer-title {
+  font-size: 1.7rem;
+  color: #ffcc54;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.footer-phrase {
+  color: #d1d1d1;
+  max-width: 380px;
+  margin: 10px auto 25px;
+  font-size: 0.95rem;
+}
+
+/* ICONOS SOCIALES */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.social-icon {
+  color: #ffcc54;
+  font-size: 1.3rem;
+  transition: 0.3s;
+  opacity: 0.8;
+}
+
+.social-icon:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  color: #9c9c9c;
+  font-size: 0.85rem;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-b612 {
+    padding: 60px 0 30px;
+  }
+}
+
+.footer-b612::after {
+  opacity: var(--twinkle-opacity, 0.12);
+}

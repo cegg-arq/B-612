@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>B-612 — Hamburguesería Estelar</title>
+
+    <!-- Bootstrap 5 (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="styles/style.css">
+  </head>
+
+  <body>
+    
+    
+    <!-- NAVBAR -------------------------------------->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-fixed w-100 top-0 py-3" id="navbar">
+        <div class="container">
+            
+            <!-- LOGO + NOMBRE -->
+            <a class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" href="#inicio">
+                <img src="/assets/images/Logotipo_Blanco.png" alt="Logo B-612°" class="logo-b612">
+                <span>B-612°</span>
+            </a>
+
+            <!-- Toggle responsive -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- MENU -->
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#destacados">Destacados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menú</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia B-612°</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+
+                    <!-- CTA DESTACADO -->
+                    <li class="nav-item ms-lg-3">
+                        <a href="https://wa.me/573245567399?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20desde%20la%20web%20B-612°." class="btn nav-cta cta-amarillo">
+                            Pide Aquí
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>  
+
+
+    <!-- ====================== HERO ====================== -->
+    <section id="inicio" class="hero-section d-flex align-items-center justify-content-center text-center">
+
+        <!-- Lienzo de estrellas -->
+        <canvas id="stars"></canvas>
+
+        <!-- Lluvia de meteoros -->
+        <div class="meteors"></div>
+
+        <!-- Halo -->
+        <div class="hero-halo"></div>
+
+        <div class="hero-content">
+            
+            <h1 class="hero-title-main">B-612°</h1>
+            <h2 class="hero-title-sub">Sabe a universo.</h2>
+
+            <p class="hero-subtitle">
+                Descubre hamburguesas creadas para viajeros que buscan algo más que sabor:
+                una experiencia que comienza en el paladar y termina en las estrellas.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-hero-primary no-underline">Explorar menú</a>
+                <a href="https://wa.me/573245567399?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20desde%20la%20web%20B-612°." class="btn btn-hero-secondary no-underline">Pide aquí</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SECCIÓN DESTACADOS - CARRUSEL COMPLETO --------------->
+
+    <section id="destacados" class="full-visual-carousel">
+
+        <div class="slides">
+
+            <div class="slide active">
+                <img src="assets/images/Banner Personaliza tu Universo.jpg" alt="">
+                <div class="slide-overlay"></div>
+                <a href="https://wa.me/573245567399?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20desde%20la%20web%20B-612°." class="btn-slide">Ordenar</a>
+            </div>
+
+            <div class="slide">
+                <img src="assets/images/Banner StoryTelling.jpg" alt="">
+                <div class="slide-overlay"></div>
+                <a href="https://wa.me/573245567399?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20desde%20la%20web%20B-612°." class="btn-slide">Ordenar</a>
+            </div>
+
+            <div class="slide">
+                <img src="assets/images/Banner Regresamos.jpg" alt="">
+                <div class="slide-overlay"></div>
+                <a href="https://wa.me/573245567399?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20desde%20la%20web%20B-612°." class="btn-slide">Ordenar</a>
+            </div>
+
+        </div>
+
+        <!-- Flechas -->
+        <button class="nav prev">&#10094;</button>
+        <button class="nav next">&#10095;</button>
+
+        <!-- Dots -->
+        <div class="dots"></div>
+
+    </section>
+
+
+    <!-- SECCIÓN MENÚ -------------------------------->
+   
+    <!-- ====================== MENÚ PLANETARIO ====================== -->
+    <section id="menu" class="menu-planetario">
+        <h2 class="titulo-exp">Menú Planetario</h2>
+        <p class="planet-subtitle">Explora nuestros sabores estelares</p>
+
+        <div class="planet-grid">
+
+            <!-- 1 -->
+            <div class="planet-card">
+                <div class="planet-img">
+                    <img src="assets/images/PETIT_CD.jpg" alt="Le Petit">
+                </div>
+                <h3>Le Petit</h3>
+                <button class="btn-planet" data-modal="petit">Ver más</button>
+            </div>
+
+            <!-- 2 -->
+            <div class="planet-card">
+                <div class="planet-img">
+                    <img src="assets/images/3VOLCANES_CD.png" alt="3 Volcanes">
+                </div>
+                <h3>3 Volcanes</h3>
+                <button class="btn-planet" data-modal="volcanes">Ver más</button>
+            </div>
+
+            <!-- 3 -->
+            <div class="planet-card">
+                <div class="planet-img">
+                    <img src="assets/images/VUELO612_CD.png" alt="Vuelo 612">
+                </div>
+                <h3>Vuelo 612</h3>
+                <button class="btn-planet" data-modal="vuelo">Ver más</button>
+            </div>
+
+            <!-- 4 -->
+            <div class="planet-card">
+                <div class="planet-img">
+                    <img src="assets/images/DOMESTIKDA_CD.png" alt="Domestikda">
+                </div>
+                <h3>Domestikda</h3>
+                <button class="btn-planet" data-modal="domestikda">Ver más</button>
+            </div>
+
+            <!-- 5 -->
+            <div class="planet-card">
+                <div class="planet-img">
+                    <img src="assets/images/FAROLERO_CD.png" alt="Farolero">
+                </div>
+                <h3>Farolero</h3>
+                <button class="btn-planet" data-modal="farolero">Ver más</button>
+            </div>
+
+            <!-- 6 — PERSONALIZABLE -->
+            <div class="planet-card special-card">
+                <div class="special-bg">
+                    <img src="assets/images/Burger.jpg" alt="Crea tu propio universo">
+                </div>
+
+                <div class="special-content">
+                    <h3>Crea tu propio universo</h3>
+                    <p>Personaliza tu experiencia estelar</p>
+
+                    <button class="btn-planet special-btn" data-modal="universo">
+                        Comenzar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ====================== MODAL B612 ====================== -->
+    <div id="modalB612" class="modal-b612">
+        <div class="modal-overlay"></div>
+
+        <div class="modal-box">
+
+            <button class="modal-close">&times;</button>
+
+            <h2 id="mName" class="modal-title"></h2>
+            <p id="mDesc" class="modal-desc"></p>
+
+            <h3 class="modal-subtitle">Ingredientes</h3>
+            <ul id="mIngredients" class="modal-ingredients"></ul>
+
+            <p id="mPrice" class="modal-price"></p>
+
+            <a id="mButton" href="https://wa.me/573245567399?text=¡Hola!%20Quiero%20hacer%20un%20pedido%20desde%20la%20web%20B-612°." class="btn-modal">PEDIR</a>
+        </div>
+    </div>
+
+    <!-- EXPERIENCIA B-612°----------------------- -->
+     
+   <section id="experiencia" class="experiencia-b612">
+        <canvas id="stars-exp"></canvas> <!-- ID NUEVO -->
+
+        <div class="contenido-wrapper">
+            
+            <h2 class="titulo-exp">Experiencia B-612°</h2>
+
+            <p class="intro-exp">
+                En un rincón pequeño del universo, nació un asteroide hecho de sabor y magia.
+            </p>
+
+            <p class="subtexto-exp">
+                B-612° no es una cocina, es un lugar con alma. Aquí cada receta tiene una historia,
+                cada burger un motivo, y cada viajero descubre un universo que le pertenece.
+            </p>
+
+            <div class="cards-exp">
+
+                <div class="card-exp">
+                    <img src="assets/images/Planeta.png" alt="Planeta icono">
+                    <h3>Cocina del Alma</h3>
+                    <p>Sabores que nacen del amor, la técnica y la sensibilidad. Historias servidas con alma.</p>
+                </div>
+
+                <div class="card-exp">
+                    <img src="assets/images/Asteroide.png" alt="Planeta icono">
+                    <h3>Universo B-612°</h3>
+                    <p>Un sistema poético donde lo cotidiano se vuelve mágico y visualmente estelar.</p>
+                </div>
+
+                <div class="card-exp">
+                    <img src="assets/images/Constelación.png" alt="Planeta icono">
+                    <h3>Experiencia Constelada</h3>
+                    <p>Un viaje sensorial donde cada sabor es un portal a otra emoción.</p>
+                </div>
+
+            </div>
+            
+            <a href="#menu" class="btn-exp">Vive tu experiencia</a>
+
+        </div>
+    </section>
+
+
+    <!-- ====================== GALERÍA CONSTELADA ====================== -->
+    
+    
+    <section id="galeria" class="galeria-constelada">
+
+        <div class="galaxy-bg"></div>           <!-- fondo estático (imagen o patrón) -->
+        <canvas id="galaxy-particles"></canvas> <!-- partículas sutiles -->
+
+        <div class="galeria-wrapper">
+
+            <h2 class="galeria-title">Galería Constelada</h2>
+            <p class="galeria-sub">Un vistazo a nuestras hamburguesas — ventanas al universo B-612°.</p>
+
+            <div class="constellation" id="constellation">
+            <!-- cada figura contiene la imagen -->
+            <div class="gal-item" data-index="0">
+                <img src="assets/images/LE PETIT.webp" alt="Le Petit">
+            </div>
+
+            <div class="gal-item" data-index="1">
+                <img src="assets/images/3VOLCANES2.webp" alt="3 Volcanes">
+            </div>
+
+            <div class="gal-item" data-index="2">
+                <img src="assets/images/VUELO612-.webp" alt="Vuelo 612">
+            </div>
+
+            <div class="gal-item" data-index="3">
+                <img src="assets/images/DOMESTIKDA1.webp" alt="Domestikda">
+            </div>
+
+            <div class="gal-item" data-index="4">
+                <img src="assets/images/FAROLERO.png" alt="Farolero">
+            </div>
+
+            <div class="gal-item" data-index="5">
+                <img src="assets/images/UNIVERSO.png" alt="Crea tu universo">
+            </div>
+
+            <!-- SVG para las líneas de constelación (se actualiza desde JS) -->
+            <svg class="constellation-lines" id="constellation-lines" aria-hidden="true"></svg>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ====================== CONTACTO - PORTAL DEL VIAJERO ====================== -->
+
+    <!-- ============================
+        SECCIÓN CONTACTO
+    ============================= -->
+    <section id="contacto" class="contact-section">
+
+        <canvas id="contact-stars"></canvas>
+
+        <div class="contact-content">
+
+            <!-- TÍTULO -->
+            <h2 class="titulo-exp">Portal del Viajero</h2>
+            <p class="contacto-sub">Comunícate con nosotros desde tu propio asteroide</p>
+
+            <div class="contact-grid">
+
+                <!-- CARD ÚNICA: UBICACIÓN + CONTACTO -->
+                <article class="contact-card big-card">
+                    <div class="card-inner">
+                        <h4 class="card-title">Ubicación</h4>
+                        <p class="card-text">Villamaría, Caldas - Colombia</p>
+
+                        <h4 class="card-title">Contacto</h4>
+                        <p class="card-text">324 556 7399</p>
+                    </div>
+                </article>
+
+                <!-- FORMULARIO -->
+                <form class="contact-form">
+                    <label>Nombre</label>
+                    <input id="nombre" type="text" placeholder="Tu nombre" required>
+
+                    <label>Mensaje</label>
+                    <textarea id="mensaje" placeholder="Escríbenos tu mensaje" required></textarea>
+
+                    <button type="submit" class="btn-galaxy">Enviar mensaje</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ====================== FOOTER ====================== -->
+    
+    <footer class="footer-b612">
+        <div class="footer-content">
+
+            <h3 class="footer-title">B-612°</h3>
+            <p class="footer-phrase">
+                Un pequeño lugar en el universo donde el sabor también es poesía.
+            </p>
+
+            <div class="footer-social">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+
+            <p class="footer-copy">© 2025 B-612°. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <!-- CONFIGURACIÓN FORMULARIO -->
+
+    <script>
+        document.querySelector(".contact-form").addEventListener("submit", function(e) {
+            e.preventDefault();      // evita recargar
+            e.stopPropagation();     // evita que algún contenedor robe el clic
+
+            const nombre = document.getElementById("nombre").value.trim();
+            const mensaje = document.getElementById("mensaje").value.trim();
+
+            const telefono = "573245567399"; // TU NÚMERO
+
+            const url = `https://wa.me/${telefono}?text=${encodeURIComponent(
+                `Hola, soy ${nombre}. ${mensaje}`
+            )}`;
+
+            window.open(url, "_blank");
+        });
+    </script>
+
+
+    <!-- Bootstrap JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Tu JS -->
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
+
+
