@@ -1155,7 +1155,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("https://i.imgur.com/iydP6Fb.png");
+ 
   opacity: 0.12;
   animation: footerStars 60s linear infinite;
   pointer-events: none;
